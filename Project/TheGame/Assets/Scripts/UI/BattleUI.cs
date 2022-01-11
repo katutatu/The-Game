@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class BattleUI : MonoBehaviour
 {
-    /// <summary>残機</summary>
-    private UIBase _Stock;
+    [SerializeField]
+    private StockUI _stock;
 
-
-    private void Setup()
-    {
-    }
 
     public UIBase GetUI(BattleUITypes battleUIType)
     {
         switch (battleUIType)
         {
             case BattleUITypes.Stock:
-                return _Stock;
+                return _stock;
             default:
                 return null;
         }
