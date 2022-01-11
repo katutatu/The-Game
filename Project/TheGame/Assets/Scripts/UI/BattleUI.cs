@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class BattleUI : MonoBehaviour
 {
-    private GameObject _hoge;
-    private GameObject _hoge2;
+    /// <summary>残機</summary>
+    private UIBase _Stock;
 
 
-    private void HOGE()
+    private void Setup()
     {
-        if (true)
+    }
+
+    public UIBase GetUI(BattleUITypes battleUIType)
+    {
+        switch (battleUIType)
         {
+            case BattleUITypes.Stock:
+                return _Stock;
+            default:
+                return null;
         }
     }
 }
