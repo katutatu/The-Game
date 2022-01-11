@@ -11,21 +11,15 @@ public enum BattleUITypes
 }
 
 /// <summary>全てのシーンのUIを管理するクラス</summary>
-public class UIManager : MonoBehaviour
+public class UIManager : SingletonMonoBehaviour<UIManager>
 {
-    [SerializeField]
-    private BattleUI _battleUIPrefab = null;
-
-
     private BattleUI _battleUI;
 
 
     public void Setup()
     {
-        _battleUI = Instantiate(_battleUIPrefab);
-
-        var stockUI = GetUI(BattleUITypes.Stock) as StockUI;
-        stockUI.SetStockCount(3);
+        // 仮 シーンが一つしかないのでこれで上手くいってるだけ
+        _battleUI = FindObjectOfType<BattleUI>();
     }
 
     public UIBase GetUI(BattleUITypes battleUIType)
