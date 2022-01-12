@@ -9,16 +9,22 @@ public class Floor : MonoBehaviour
     {
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
+	// Update is called once per frame
+	void Update()
+	{
 		Transform _transform = this.transform;
 		Vector3 _pos = _transform.position;
-		_pos.z -= 0.02f;
+		Vector3 _scale = _transform.localScale;
 
-		if ( _pos.z <= -100.0f )
+		//床移動のスピード
+		const float _floorSpeed = 0.02f;
+		_pos.z -= _floorSpeed;
+
+		//*10は1グリッドのサイズっぽい
+		float _floorSize = _scale.z * 10.0f;
+		if (_pos.z <= -_floorSize)
 		{
-			_pos.z = 100.0f;
+			_pos.z = _floorSize;
 		}
 
 		_transform.position = _pos;
