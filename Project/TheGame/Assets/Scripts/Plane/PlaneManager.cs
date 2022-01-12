@@ -24,9 +24,12 @@ public class PlaneManager
         plane.Setup(planeData, isPlayerPlane);
 
         // 自機の場合の処理
+        var pos = Vector3.zero;
+        var rot = Vector3.zero;
         if (plane.IsPlayerPlane)
         {
             _isCreatedPlayerPlane = true;
+            plane.Spawn();
 
             UIController.UpdateStockUI(plane.Stock);
 
@@ -38,12 +41,20 @@ public class PlaneManager
         else
         {
             // 仮
-            plane.transform.position = new Vector3(0.0f, 0.0f, 15.0f);
+            plane.transform.position = new Vector3(0.0f, 0.0f, 25.0f);
             plane.transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
         }
 
         _planes.Add(plane);
 
         return plane;
+    }
+
+    public void Tick()
+    {
+        foreach (var plane in _planes)
+        {
+            plane.Tick();
+        }
     }
 }

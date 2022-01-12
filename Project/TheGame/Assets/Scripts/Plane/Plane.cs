@@ -11,6 +11,7 @@ public interface IPlaneCockpit : IPlaneReadOnly
 /// <summary>機体状態取得専用インターフェース</summary>
 public interface IPlaneReadOnly
 {
+    bool IsActive { get; }
     bool IsDead { get; }
     int Stock { get; }
     Vector3 Position { get; }
@@ -21,6 +22,12 @@ public class Plane : MonoBehaviour, IPlaneCockpit
 {
     /// <summary>自機か</summary>
     public bool IsPlayerPlane { get; private set; }
+
+    /// <summary>アクティブか</summary>
+    public bool IsActive { get { return IsSpawned && !IsDead; } }
+
+    /// <summary>スポーン済みか</summary>
+    public bool IsSpawned { get; private set; }
 
     /// <summary>死亡しているか</summary>
     public bool IsDead { get { return Stock <= 0; } }
@@ -44,6 +51,30 @@ public class Plane : MonoBehaviour, IPlaneCockpit
         IsPlayerPlane = isPlayerPlane;
         Stock = planeData.stock;
         MoveSpeed = planeData.move_speed;
+
+        gameObject.SetActive(false);
+    }
+
+    public void Tick()
+    {
+        // Com機が未スポーンなら移動
+        if (!IsPlayerPlane && !IsSpawned)
+        {
+            transform.position += Vector3.back * BattleFixedParams.BattleObjectScrollSpeed * Time.deltaTime;
+
+            // 一定距離より近くなったらスポーン
+            if (transform.position.z <= BattleFixedParams.SpawnDistanceZ)
+            {
+                Spawn();
+            }
+        }
+    }
+
+    public void Spawn()
+    {
+        Debug.Assert(!IsSpawned);
+        IsSpawned = true;
+        gameObject.SetActive(true);
     }
 
     public void ReceiveDamage()
