@@ -7,6 +7,9 @@ public class BattleUI : MonoBehaviour
     [SerializeField]
     private StockUI _stock;
 
+    [SerializeField]
+    private ScoreUI _score;
+
 
     public UIBase GetUI(BattleUITypes battleUIType)
     {
@@ -14,6 +17,8 @@ public class BattleUI : MonoBehaviour
         {
             case BattleUITypes.Stock:
                 return _stock;
+            case BattleUITypes.Score:
+                return _score;
             default:
                 return null;
         }

@@ -13,5 +13,15 @@ public static class UIController
         {
             stockUI.SetStockCount(stock);
         }
-    } 
+    }
+
+    /// <summary>スコアUI更新</summary>
+    public static void UpdateScoreUI(int score)
+    {
+        var scoreUI = UIManager.Instance.GetUI(BattleUITypes.Score) as ScoreUI;
+        if (scoreUI != null)
+        {
+            scoreUI.SetScore(score);
+        }
+    }
 }

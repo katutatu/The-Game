@@ -35,6 +35,8 @@ public class GODClass : MonoBehaviour
     {
         UIManager.Instance.Setup();
 
+        UIController.UpdateScoreUI(0);
+
         _playerPlane = CreatePlane(_playerPlanePrefab, PlayerPlaneData, true);
         _comPlane = CreatePlane(_comPlanePrefab, ComPlaneData, false);
 

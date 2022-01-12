@@ -8,6 +8,8 @@ public enum BattleUITypes
     None,
     /// <summary>残機</summary>
     Stock,
+    /// <summary>スコア</summary>
+    Score,
 }
 
 /// <summary>全てのシーンのUIを管理するクラス</summary>
