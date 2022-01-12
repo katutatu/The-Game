@@ -39,12 +39,6 @@ public class PlaneManager
             // 仮
             plane.transform.position = new Vector3(0.0f, 5.0f, 0.0f);
         }
-        else
-        {
-            // 仮
-            plane.transform.position = new Vector3(0.0f, 5.0f, 25.0f);
-            plane.transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
-        }
 
         _planes.Add(plane);
 
