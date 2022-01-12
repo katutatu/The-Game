@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04350ca1c427ddb49a1ae33c7e9fd214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerPlanePrefab: {fileID: 6546428981699481926, guid: df508e09dc98c794099d0f02dab8807b, type: 3}
+  _comPlanePrefab: {fileID: 4261851103357020164, guid: f6d4109da7a8fb14598e335baed19ec6, type: 3}
 --- !u!1 &834625944
 GameObject:
   m_ObjectHideFlags: 0
