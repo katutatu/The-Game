@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +19,7 @@ public class Rock : MonoBehaviour
         _transform.Rotate(_rotateSpeed);
 
 		Vector3 _pos = _transform.position;
-		//°ˆÚ“®‚ÌƒXƒs[ƒh
+		//åºŠç§»å‹•ã®ã‚¹ãƒ”ãƒ¼ãƒ‰
 		const float _moveSpeed = 0.1f;
 		_pos.z -= _moveSpeed;
 		_transform.position = _pos;
