@@ -10,7 +10,7 @@ public class PlaneManager
 
 
     /// <summary>機体を作成</summary>
-    public Plane CreatePlane(Plane planePrefab, PlaneData planeData, bool isPlayerPlane)
+    public Plane CreatePlane(Plane planePrefab, PlaneData planeData, IBulletShootSystem bulletShootSystem, bool isPlayerPlane)
     {
         // 2つ以上自機を作ろうとしている
         if (_isCreatedPlayerPlane && isPlayerPlane)
@@ -21,7 +21,7 @@ public class PlaneManager
         var plane = Object.Instantiate(planePrefab);
 
         // セットアップ
-        plane.Setup(planeData, isPlayerPlane);
+        plane.Setup(planeData, bulletShootSystem, isPlayerPlane);
 
         // 自機の場合の処理
         if (plane.IsPlayerPlane)

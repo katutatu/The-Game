@@ -28,5 +28,10 @@ public class PlayerPilot : Pilot
         {
             _plane.Move(moveVec);
         }
+
+        if (Input.GetMouseButton(0))
+        {
+            _plane.Shoot();
+        }
     }
 }

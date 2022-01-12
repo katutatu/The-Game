@@ -15,9 +15,7 @@ public class ComPilot : Pilot
 
     public override void TickActive()
     {
-        if (!_plane.IsDead)
-        {
-            _plane.Move(Vector3.back);
-        }
+        _plane.Move(Vector3.back);
+        _plane.Shoot();
     }
 }

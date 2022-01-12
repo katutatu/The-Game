@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>機体操作インターフェース</summary>
 public interface IPlaneCockpit : IPlaneReadOnly
 {
+    void Shoot();
     void Move(Vector3 vec);
 }
 
@@ -41,16 +42,27 @@ public class Plane : MonoBehaviour, IPlaneCockpit
     /// <summary>移動速度</summary>
     public float MoveSpeed { get; private set; }
 
+    /// <summary>弾発射間隔</summary>
+    public float BulletShootInterval { get; private set; }
+
 
     /// <summary>被ダメージ時イベント 引数: ダメージ後の残機数</summary>
     public System.Action<int> OnDamaged;
 
 
-    public void Setup(PlaneData planeData, bool isPlayerPlane)
+    private float _bulletShootIntervalCount;
+    /// <summary>弾射撃インターフェース</summary>
+    private IBulletShootSystem _bulletShootSystem;
+
+
+    public void Setup(PlaneData planeData, IBulletShootSystem bulletShootSystem, bool isPlayerPlane)
     {
         IsPlayerPlane = isPlayerPlane;
         Stock = planeData.stock;
+        BulletShootInterval = planeData.bullet_shoot_interval;
         MoveSpeed = planeData.move_speed;
+
+        _bulletShootSystem = bulletShootSystem;
 
         gameObject.SetActive(false);
     }
@@ -83,6 +95,18 @@ public class Plane : MonoBehaviour, IPlaneCockpit
 
         Stock--;
         OnDamaged?.Invoke(Stock);
+    }
+
+    public void Shoot()
+    {
+        if (IsDead) { return; }
+
+        _bulletShootIntervalCount += Time.deltaTime;
+        if (_bulletShootIntervalCount >= BulletShootInterval)
+        {
+            _bulletShootIntervalCount = 0.0f;
+            _bulletShootSystem.Shoot("", transform.position, transform.forward);
+        }
     }
 
     public void Move(Vector3 vec)
