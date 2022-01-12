@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,11 +16,11 @@ public class Floor : MonoBehaviour
 		Vector3 _pos = _transform.position;
 		Vector3 _scale = _transform.localScale;
 
-		//°ˆÚ“®‚ÌƒXƒs[ƒh
-		const float _floorSpeed = 0.02f;
+		//åºŠç§»å‹•ã®ã‚¹ãƒ”ãƒ¼ãƒ‰
+		const float _floorSpeed = 0.01f;
 		_pos.z -= _floorSpeed;
 
-		//*10‚Í1ƒOƒŠƒbƒh‚ÌƒTƒCƒY‚Á‚Û‚¢
+		//*10ã¯1ã‚°ãƒªãƒƒãƒ‰ã®ã‚µã‚¤ã‚ºã£ã½ã„
 		float _floorSize = _scale.z * 10.0f;
 		if (_pos.z <= -_floorSize)
 		{
