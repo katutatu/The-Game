@@ -13,16 +13,23 @@ public interface IPlaneReadOnly
 {
     bool IsDead { get; }
     int Stock { get; }
+    Vector3 Position { get; }
 }
 
 /// <summary>機体クラス</summary>
 public class Plane : MonoBehaviour, IPlaneCockpit
 {
+    /// <summary>自機か</summary>
+    public bool IsPlayerPlane { get; private set; }
+
     /// <summary>死亡しているか</summary>
     public bool IsDead { get { return Stock <= 0; } }
 
     /// <summary>残機</summary>
     public int Stock { get; private set; }
+
+    /// <summary>座標</summary>
+    public Vector3 Position { get; private set; }
 
     /// <summary>移動速度</summary>
     public float MoveSpeed { get; private set; }
@@ -32,8 +39,9 @@ public class Plane : MonoBehaviour, IPlaneCockpit
     public System.Action<int> OnDamaged;
 
 
-    public void Setup(PlaneData planeData)
+    public void Setup(PlaneData planeData, bool isPlayerPlane)
     {
+        IsPlayerPlane = isPlayerPlane;
         Stock = planeData.stock;
         MoveSpeed = planeData.move_speed;
     }
