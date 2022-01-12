@@ -10,7 +10,7 @@ public class PlayerPilot : Pilot
         var moveVec = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
         {
-            moveVec += Vector3.forward;
+            moveVec += Vector3.up;
         }
         if (Input.GetKey(KeyCode.A))
         {
@@ -18,7 +18,7 @@ public class PlayerPilot : Pilot
         }
         if (Input.GetKey(KeyCode.S))
         {
-            moveVec += Vector3.back;
+            moveVec += Vector3.down;
         }
         if (Input.GetKey(KeyCode.D))
         {

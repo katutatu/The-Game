@@ -24,8 +24,6 @@ public class PlaneManager
         plane.Setup(planeData, isPlayerPlane);
 
         // 自機の場合の処理
-        var pos = Vector3.zero;
-        var rot = Vector3.zero;
         if (plane.IsPlayerPlane)
         {
             _isCreatedPlayerPlane = true;
@@ -37,11 +35,14 @@ public class PlaneManager
             {
                 UIController.UpdateStockUI(stock);
             };
+
+            // 仮
+            plane.transform.position = new Vector3(0.0f, 5.0f, 0.0f);
         }
         else
         {
             // 仮
-            plane.transform.position = new Vector3(0.0f, 0.0f, 25.0f);
+            plane.transform.position = new Vector3(0.0f, 5.0f, 25.0f);
             plane.transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
         }
 
