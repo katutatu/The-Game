@@ -15,5 +15,14 @@ public abstract class Pilot
     }
 
     /// <summary>毎フレ呼ばれる</summary>
-    public abstract void Tick();
+    public void Tick()
+    {
+        if (_plane.IsActive)
+        {
+            TickActive();
+        }
+    }
+
+    /// <summary>アクティブ時毎フレ呼ばれる</summary>
+    public abstract void TickActive();
 }

@@ -50,5 +50,6 @@ public class GODClass : MonoBehaviour
     private void Update()
     {
         _pilotManager.Tick();
+        _planeManager.Tick();
     }
 }

@@ -27,6 +27,7 @@ public class PlaneManager
         if (plane.IsPlayerPlane)
         {
             _isCreatedPlayerPlane = true;
+            plane.Spawn();
 
             UIController.UpdateStockUI(plane.Stock);
 
@@ -34,16 +35,27 @@ public class PlaneManager
             {
                 UIController.UpdateStockUI(stock);
             };
+
+            // 仮
+            plane.transform.position = new Vector3(0.0f, 5.0f, 0.0f);
         }
         else
         {
             // 仮
-            plane.transform.position = new Vector3(0.0f, 0.0f, 15.0f);
+            plane.transform.position = new Vector3(0.0f, 5.0f, 25.0f);
             plane.transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
         }
 
         _planes.Add(plane);
 
         return plane;
+    }
+
+    public void Tick()
+    {
+        foreach (var plane in _planes)
+        {
+            plane.Tick();
+        }
     }
 }

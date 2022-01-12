@@ -13,7 +13,7 @@ public class ComPilot : Pilot
         _playerPlane = playerPlane;
     }
 
-    public override void Tick()
+    public override void TickActive()
     {
         if (!_plane.IsDead)
         {
