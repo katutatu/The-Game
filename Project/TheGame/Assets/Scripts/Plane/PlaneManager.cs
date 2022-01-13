@@ -6,11 +6,13 @@ public class PlaneManager
 {
     private bool _isCreatedPlayerPlane;
 
+    private Plane _planeRigPrefab;
+
     private List<Plane> _planes = new List<Plane>();
 
 
     /// <summary>機体を作成</summary>
-    public Plane CreatePlane(Plane planePrefab, PlaneData planeData, IBulletShootSystem bulletShootSystem, bool isPlayerPlane)
+    public Plane CreatePlane(GameObject planeModelPrefab, PlaneData planeData, IBulletShootSystem bulletShootSystem, bool isPlayerPlane)
     {
         // 2つ以上自機を作ろうとしている
         if (_isCreatedPlayerPlane && isPlayerPlane)
@@ -18,7 +20,11 @@ public class PlaneManager
             return null;
         }
 
-        var plane = Object.Instantiate(planePrefab);
+        var plane = Object.Instantiate(_planeRigPrefab);
+        var planeModel = Object.Instantiate(planeModelPrefab);
+
+        // 
+        planeModel.transform.SetParent(plane.transform);
 
         // セットアップ
         plane.Setup(planeData, bulletShootSystem, isPlayerPlane);
@@ -43,6 +49,11 @@ public class PlaneManager
         _planes.Add(plane);
 
         return plane;
+    }
+
+    public void Setup(Plane planeRigPrefab)
+    {
+        _planeRigPrefab = planeRigPrefab;
     }
 
     public void Tick()

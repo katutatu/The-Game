@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IBulletShootSystem
 {
-    void Shoot(string id, Vector3 position, Vector3 direction);
+    void Shoot(string id, TeamTypes teamType, Vector3 position, Vector3 direction);
 }
 
 public class BulletManager : IBulletShootSystem
@@ -12,10 +12,10 @@ public class BulletManager : IBulletShootSystem
     private List<Bullet> _bullets = new List<Bullet>();
 
 
-    public void Shoot(string id, Vector3 position, Vector3 direction)
+    public void Shoot(string id, TeamTypes teamType, Vector3 position, Vector3 direction)
     {
         var b = CreateBullet();
-        b.Reset(position, direction);
+        b.Reset(teamType, position, direction);
     }
 
     public Bullet CreateBullet()

@@ -34,9 +34,11 @@ public class GODClass : MonoBehaviour
 
 
     [SerializeField]
-    private Plane _playerPlanePrefab = null;
+    private Plane _planeRigPrefab = null;
     [SerializeField]
-    private Plane _comPlanePrefab = null;
+    private GameObject _playerPlaneModelPrefab = null;
+    [SerializeField]
+    private GameObject _comPlaneModelPrefab = null;
 
 
     private PlaneManager _planeManager = new PlaneManager();
@@ -47,11 +49,12 @@ public class GODClass : MonoBehaviour
     private void Start()
     {
         UIManager.Instance.Setup();
+        _planeManager.Setup(_planeRigPrefab);
 
         UIController.UpdateScoreUI(0);
 
         // 自機
-        var pPlane = _planeManager.CreatePlane(_playerPlanePrefab, PlaneDataList.FirstOrDefault(it => it.id == "PLANE_DATA_0001"), _bulletManager, true);
+        var pPlane = _planeManager.CreatePlane(_playerPlaneModelPrefab, PlaneDataList.FirstOrDefault(it => it.id == "PLANE_DATA_0001"), _bulletManager, true);
         _pilotManager.CreatePlayerPilot(pPlane);
 
         // 敵
@@ -60,7 +63,7 @@ public class GODClass : MonoBehaviour
         {
             foreach (var planeSpawnInfo in planeSpawnInfoList)
             {
-                var cPlane = _planeManager.CreatePlane(_comPlanePrefab, PlaneDataList.FirstOrDefault(it => it.id == planeSpawnInfo.Id), _bulletManager, false);
+                var cPlane = _planeManager.CreatePlane(_comPlaneModelPrefab, PlaneDataList.FirstOrDefault(it => it.id == planeSpawnInfo.Id), _bulletManager, false);
                 cPlane.transform.position = planeSpawnInfo.transform.position;
                 cPlane.transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
                 _pilotManager.CreateComPilot(cPlane, pPlane);
