@@ -19,4 +19,16 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBe
             return _instance;
         }
     }
+
+    private void Awake()
+    {
+        if (_instance != null)
+        {
+            Destroy(this);
+            return;
+        }
+
+        _instance = this as T;
+        DontDestroyOnLoad(_instance.gameObject);
+    }
 }

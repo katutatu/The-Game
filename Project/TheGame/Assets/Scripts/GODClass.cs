@@ -49,6 +49,8 @@ public class GODClass : MonoBehaviour
     private BulletManager _bulletManager = new BulletManager();
     private ScoreManager _scoreManager = new ScoreManager();
 
+    private Plane _plaerPlane;
+
 
     private void Start()
     {
@@ -76,6 +78,8 @@ public class GODClass : MonoBehaviour
         }
 
         _scoreManager.OnScoreChanged += (int score) => { UIController.UpdateScoreUI(score); };
+
+        _plaerPlane = pPlane;
     }
 
     private void Update()
@@ -83,5 +87,10 @@ public class GODClass : MonoBehaviour
         _pilotManager.Tick();
         _planeManager.Tick();
         _bulletManager.Tick();
+    }
+
+    public bool IsEnd()
+    {
+        return _plaerPlane != null && _plaerPlane.IsDead;
     }
 }
