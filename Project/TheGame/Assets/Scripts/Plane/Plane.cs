@@ -55,6 +55,9 @@ public class Plane : MonoBehaviour, IPlaneCockpit
     /// <summary>弾発射間隔</summary>
     public float BulletShootInterval { get; private set; }
 
+    /// <summary>撃破時のスコア</summary>
+    public int Score { get; private set; }
+
 
     /// <summary>被ダメージ時イベント 引数: ダメージ後の残機数</summary>
     public System.Action<int> OnDamaged;
@@ -74,6 +77,7 @@ public class Plane : MonoBehaviour, IPlaneCockpit
         Stock = planeData.stock;
         BulletShootInterval = planeData.bullet_shoot_interval;
         MoveSpeed = planeData.move_speed;
+        Score = planeData.score;
 
         _bulletShootSystem = bulletShootSystem;
 

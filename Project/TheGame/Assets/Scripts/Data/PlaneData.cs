@@ -15,4 +15,7 @@ public class PlaneData
 
     /// <summary>弾発射間隔</summary>
     public float bullet_shoot_interval;
+
+    /// <summary>撃破時のスコア</summary>
+    public int score;
 }

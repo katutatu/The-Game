@@ -14,6 +14,7 @@ public class GODClass : MonoBehaviour
             stock = 5,
             move_speed = 5.0f,
             bullet_shoot_interval = 0.1f,
+            score = 0,
         },
         new PlaneData()
         {
@@ -21,6 +22,7 @@ public class GODClass : MonoBehaviour
             stock = 1,
             move_speed = 0.0f,
             bullet_shoot_interval = 0.25f,
+            score = 100,
         },
         new PlaneData()
         {
@@ -28,6 +30,7 @@ public class GODClass : MonoBehaviour
             stock = 1,
             move_speed = 2.5f,
             bullet_shoot_interval = 0.5f,
+            score = 125,
         },
     };
 
@@ -44,6 +47,7 @@ public class GODClass : MonoBehaviour
     private PlaneManager _planeManager = new PlaneManager();
     private PilotManager _pilotManager = new PilotManager();
     private BulletManager _bulletManager = new BulletManager();
+    private ScoreManager _scoreManager = new ScoreManager();
 
 
     private void Start()
@@ -64,11 +68,14 @@ public class GODClass : MonoBehaviour
             foreach (var planeSpawnInfo in planeSpawnInfoList)
             {
                 var cPlane = _planeManager.CreatePlane(_comPlaneModelPrefab, PlaneDataList.FirstOrDefault(it => it.id == planeSpawnInfo.Id), _bulletManager, false);
+                cPlane.OnDied += () => { _scoreManager.UpdateScore(cPlane.Score); };
                 cPlane.transform.position = planeSpawnInfo.transform.position;
                 cPlane.transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
                 _pilotManager.CreateComPilot(cPlane, pPlane);
             }
         }
+
+        _scoreManager.OnScoreChanged += (int score) => { UIController.UpdateScoreUI(score); };
     }
 
     private void Update()
