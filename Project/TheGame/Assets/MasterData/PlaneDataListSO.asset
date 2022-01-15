@@ -14,16 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DataList:
   - id: PLANE_DATA_0001
+    asset_name: PlayerPlaneV1
     stock: 5
     move_speed: 5
     bullet_shoot_interval: 0.1
     score: 0
   - id: PLANE_DATA_1001
+    asset_name: ComPlaneV1
     stock: 1
     move_speed: 0
     bullet_shoot_interval: 0.25
     score: 100
   - id: PLANE_DATA_1002
+    asset_name: ComPlaneV1
     stock: 1
     move_speed: 2.5
     bullet_shoot_interval: 0.5

@@ -5,6 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class PlaneData : DataBase
 {
+    /// <summary>アセット名</summary>
+    public string asset_name;
+
     /// <summary>残機(敵の場合はHP？)</summary>
     public int stock;
 

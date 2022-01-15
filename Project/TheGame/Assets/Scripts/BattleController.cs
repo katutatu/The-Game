@@ -3,17 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-/// <summary>神クラス</summary>
-public class GODClass : MonoBehaviour
+/// <summary>バトル操作クラス</summary>
+public class BattleController : MonoBehaviour
 {
-    [SerializeField]
-    private Plane _planeRigPrefab = null;
-    [SerializeField]
-    private GameObject _playerPlaneModelPrefab = null;
-    [SerializeField]
-    private GameObject _comPlaneModelPrefab = null;
-
-
     private PlaneManager _planeManager = new PlaneManager();
     private PilotManager _pilotManager = new PilotManager();
     private BulletManager _bulletManager = new BulletManager();
@@ -25,12 +17,12 @@ public class GODClass : MonoBehaviour
     private void Start()
     {
         UIManager.Instance.Setup();
-        _planeManager.Setup(_planeRigPrefab);
+        _planeManager.Setup(FindObjectOfType<PlaneFactory>());
 
         UIController.UpdateScoreUI(0);
 
         // 自機
-        var pPlane = _planeManager.CreatePlane(_playerPlaneModelPrefab, MasterData.Instance.FindPlaneData("PLANE_DATA_0001"), _bulletManager, true);
+        var pPlane = _planeManager.CreatePlane(MasterData.Instance.FindPlaneData("PLANE_DATA_0001"), _bulletManager, true);
         _pilotManager.CreatePlayerPilot(pPlane);
 
         // 敵
@@ -39,7 +31,7 @@ public class GODClass : MonoBehaviour
         {
             foreach (var planeSpawnInfo in planeSpawnInfoList)
             {
-                var cPlane = _planeManager.CreatePlane(_comPlaneModelPrefab, MasterData.Instance.FindPlaneData(planeSpawnInfo.Id), _bulletManager, false);
+                var cPlane = _planeManager.CreatePlane(MasterData.Instance.FindPlaneData(planeSpawnInfo.Id), _bulletManager, false);
                 cPlane.OnDied += () => { _scoreManager.UpdateScore(cPlane.Score); };
                 cPlane.transform.position = planeSpawnInfo.transform.position;
                 cPlane.transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
