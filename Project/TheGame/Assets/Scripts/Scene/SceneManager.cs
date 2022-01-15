@@ -53,6 +53,7 @@ public class SceneManager : SingletonMonoBehaviour<SceneManager>
                 _scene = gameObject.AddComponent<StageSelectScene>();
                 break;
             case SceneNames.Stage1:
+            case SceneNames.Stage2:
                 _scene = gameObject.AddComponent<BattleScene>();
                 break;
             case SceneNames.Result:

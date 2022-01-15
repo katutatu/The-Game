@@ -10,5 +10,9 @@ public class StageSelectScene : Scene
         {
             SceneManager.Instance.ChangeScene(SceneNames.Stage1);
         }
+        if (Input.GetMouseButton(1))
+        {
+            SceneManager.Instance.ChangeScene(SceneNames.Stage2);
+        }
     }
 }
