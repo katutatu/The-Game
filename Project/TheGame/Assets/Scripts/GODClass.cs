@@ -6,36 +6,6 @@ using System.Linq;
 /// <summary>神クラス</summary>
 public class GODClass : MonoBehaviour
 {
-    private static readonly PlaneData[] PlaneDataList = new PlaneData[]
-    {
-        new PlaneData()
-        {
-            id = "PLANE_DATA_0001",
-            stock = 5,
-            move_speed = 5.0f,
-            bullet_shoot_interval = 0.1f,
-            score = 0,
-        },
-        new PlaneData()
-        {
-            id = "PLANE_DATA_1001",
-            stock = 1,
-            move_speed = 0.0f,
-            bullet_shoot_interval = 0.25f,
-            score = 100,
-        },
-        new PlaneData()
-        {
-            id = "PLANE_DATA_1002",
-            stock = 1,
-            move_speed = 2.5f,
-            bullet_shoot_interval = 0.5f,
-            score = 125,
-        },
-    };
-
-
-
     [SerializeField]
     private Plane _planeRigPrefab = null;
     [SerializeField]
@@ -60,7 +30,7 @@ public class GODClass : MonoBehaviour
         UIController.UpdateScoreUI(0);
 
         // 自機
-        var pPlane = _planeManager.CreatePlane(_playerPlaneModelPrefab, PlaneDataList.FirstOrDefault(it => it.id == "PLANE_DATA_0001"), _bulletManager, true);
+        var pPlane = _planeManager.CreatePlane(_playerPlaneModelPrefab, MasterData.Instance.FindPlaneData("PLANE_DATA_0001"), _bulletManager, true);
         _pilotManager.CreatePlayerPilot(pPlane);
 
         // 敵
@@ -69,7 +39,7 @@ public class GODClass : MonoBehaviour
         {
             foreach (var planeSpawnInfo in planeSpawnInfoList)
             {
-                var cPlane = _planeManager.CreatePlane(_comPlaneModelPrefab, PlaneDataList.FirstOrDefault(it => it.id == planeSpawnInfo.Id), _bulletManager, false);
+                var cPlane = _planeManager.CreatePlane(_comPlaneModelPrefab, MasterData.Instance.FindPlaneData(planeSpawnInfo.Id), _bulletManager, false);
                 cPlane.OnDied += () => { _scoreManager.UpdateScore(cPlane.Score); };
                 cPlane.transform.position = planeSpawnInfo.transform.position;
                 cPlane.transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);

@@ -140,7 +140,7 @@ public class Plane : MonoBehaviour, IPlaneCockpit
         if (_bulletShootIntervalCount >= BulletShootInterval)
         {
             _bulletShootIntervalCount = 0.0f;
-            _bulletShootSystem.Shoot("", TeamType, transform.position, transform.forward);
+            _bulletShootSystem.Shoot(MasterData.Instance.FindBulletData("BULLET_DATA_0001"), TeamType, transform.position, transform.forward);
         }
     }
 
@@ -158,6 +158,7 @@ public class Plane : MonoBehaviour, IPlaneCockpit
         if (collider.gameObject.TryGetComponent<Bullet>(out var bullet))
         {
             ReceiveDamage();
+            bullet.SetActive(false);
         }
     }
 }
