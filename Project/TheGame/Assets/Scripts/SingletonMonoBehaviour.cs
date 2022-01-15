@@ -10,11 +10,7 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBe
     {
         get
         {
-            if (_instance == null)
-            {
-                _instance = new GameObject(typeof(T).Name).AddComponent<T>();
-                DontDestroyOnLoad(_instance.gameObject);
-            }
+            CreateIfNull();
 
             return _instance;
         }
@@ -30,5 +26,14 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBe
 
         _instance = this as T;
         DontDestroyOnLoad(_instance.gameObject);
+    }
+
+    public static void CreateIfNull()
+    {
+        if (_instance == null)
+        {
+            _instance = new GameObject(typeof(T).Name).AddComponent<T>();
+            DontDestroyOnLoad(_instance.gameObject);
+        }
     }
 }

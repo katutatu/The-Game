@@ -21,6 +21,10 @@ public class AppController : SingletonMonoBehaviour<AppController>
         // アプリ設定
         Application.targetFrameRate = 60;
 
+#if UNITY_EDITOR
+        FPSCounter.CreateIfNull();
+#endif
+
         // SceneManager初期化中に他のManagerクラスを使用するため最後に初期化
         var startSceneName = SceneManager.Instance.GetActiveSceneName();
         SceneManager.Instance.ChangeScene(startSceneName);
