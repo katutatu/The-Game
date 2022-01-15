@@ -46,19 +46,24 @@ public class SceneManager : SingletonMonoBehaviour<SceneManager>
 
         switch (sceneName)
         {
-            case SceneNames.Title: _scene = gameObject.AddComponent<TitleScene>(); break;
-            case SceneNames.StageSelect: _scene = gameObject.AddComponent<StageSelectScene>(); break;
-            case SceneNames.Stage1: _scene = gameObject.AddComponent<BattleScene>(); break;
+            case SceneNames.Title:
+                _scene = gameObject.AddComponent<TitleScene>();
+                break;
+            case SceneNames.StageSelect:
+                _scene = gameObject.AddComponent<StageSelectScene>();
+                break;
+            case SceneNames.Stage1:
+                _scene = gameObject.AddComponent<BattleScene>();
+                break;
+            case SceneNames.Result:
+                _scene = gameObject.AddComponent<ResultScene>();
+                break;
             default:
+                Debug.LogError("Not implemented Scene.");
                 break;
         }
 
-
-        if (_scene == null)
-        {
-            Debug.LogError("Not implemented Scene.");
-        }
-        else
+        if (_scene != null)
         {
             _scene.StartScene();
             yield return _scene.StartSceneAsync();

@@ -20,7 +20,7 @@ public class BattleScene : Scene
             _isEnd = _godClass != null && _godClass.IsEnd();
             if (_isEnd)
             {
-                SceneManager.Instance.ChangeScene(SceneNames.Title);
+                SceneManager.Instance.ChangeScene(SceneNames.Result);
             }
         }
     }
