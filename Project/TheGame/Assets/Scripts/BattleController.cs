@@ -10,6 +10,7 @@ public class BattleController : MonoBehaviour
     private PilotManager _pilotManager = new PilotManager();
     private BulletManager _bulletManager = new BulletManager();
     private ScoreManager _scoreManager = new ScoreManager();
+    private FieldManager _fieldManager = new FieldManager();
 
     private Plane _plaerPlane;
 
@@ -18,6 +19,7 @@ public class BattleController : MonoBehaviour
     {
         UIManager.Instance.Setup();
         _planeManager.Setup(FindObjectOfType<PlaneFactory>());
+        _fieldManager.Setup(FindObjectOfType<FieldObjectFactory>());
 
         UIController.UpdateScoreUI(0);
 
@@ -38,6 +40,9 @@ public class BattleController : MonoBehaviour
                 _pilotManager.CreateComPilot(cPlane, pPlane);
             }
         }
+
+        //フィールドの物体（敵とか自我を持たないものは全部これを使う予定）
+        _fieldManager.CreateAndSetupStageFieldObjects();
 
         _scoreManager.OnScoreChanged += (int score) => { UIController.UpdateScoreUI(score); };
 
