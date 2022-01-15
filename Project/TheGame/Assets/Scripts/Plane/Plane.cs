@@ -124,13 +124,11 @@ public class Plane : MonoBehaviour, IPlaneCockpit
 
         Stock--;
         OnDamaged?.Invoke(Stock);
-        Debug.Log("Damage");
 
         if (IsDead)
         {
             Hide();
             OnDied?.Invoke();
-            Debug.Log("Dead");
         }
     }
 
