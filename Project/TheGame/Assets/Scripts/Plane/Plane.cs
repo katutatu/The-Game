@@ -154,5 +154,10 @@ public class Plane : MonoBehaviour, IPlaneCockpit
             ReceiveDamage();
             bullet.SetActive(false);
         }
+
+        if (collider.gameObject.TryGetComponent<Rock>(out var rock))
+        {
+            ReceiveDamage();
+        }
     }
 }

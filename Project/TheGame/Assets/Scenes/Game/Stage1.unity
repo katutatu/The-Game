@@ -398,7 +398,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834625944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: -5}
+  m_LocalPosition: {x: 0, y: 5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -557,7 +557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4947852616019709117, guid: 45c7970398b35e84b92532582a40e062, type: 3}
       propertyPath: SpawnList.Array.data[4].spawnPos.y
-      value: -30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4947852616019709117, guid: 45c7970398b35e84b92532582a40e062, type: 3}
       propertyPath: SpawnList.Array.data[4].spawnPos.z
@@ -581,7 +581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4947852616019709117, guid: 45c7970398b35e84b92532582a40e062, type: 3}
       propertyPath: SpawnList.Array.data[6].spawnPos.y
-      value: -30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4947852616019709117, guid: 45c7970398b35e84b92532582a40e062, type: 3}
       propertyPath: SpawnList.Array.data[6].spawnPos.z
@@ -969,25 +969,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85fdc7b510789aa4d938044b8835e700, type: 3}
---- !u!1 &1213289510 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2003378966798316727, guid: 85fdc7b510789aa4d938044b8835e700, type: 3}
-  m_PrefabInstance: {fileID: 1213289509}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1213289511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1213289510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc8d4e6eefe64ec4e8672cf172c1eeed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fieldObjectRigPrefab: {fileID: -6625417798610144446, guid: d2f192c371f0f7f408ef6d3471aa68ca, type: 3}
-  _fieldObjectModelPrefabs: []
 --- !u!1001 &1638264401
 PrefabInstance:
   m_ObjectHideFlags: 0

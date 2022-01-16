@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4137967681417086968}
   - component: {fileID: 8795496926072599234}
   - component: {fileID: 1681264320443522230}
+  - component: {fileID: 1213289511}
   m_Layer: 0
   m_Name: BattleRequiredData
   m_TagString: Untagged
@@ -60,3 +61,17 @@ MonoBehaviour:
   _planeModelPrefabs:
   - {fileID: 5525295603368428666, guid: df508e09dc98c794099d0f02dab8807b, type: 3}
   - {fileID: 5525295603368428666, guid: f6d4109da7a8fb14598e335baed19ec6, type: 3}
+--- !u!114 &1213289511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003378966798316727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc8d4e6eefe64ec4e8672cf172c1eeed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fieldObjectRigPrefab: {fileID: -7758144715005998724, guid: d2f192c371f0f7f408ef6d3471aa68ca, type: 3}
+  _fieldObjectModelPrefabs: []

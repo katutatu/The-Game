@@ -18,21 +18,29 @@ public class Rock : FieldObjectBase
 
         Vector3 _position = _transform.position;
 
-        var target = GameObject.Find("Main Camera").transform;
-        var diff = target.position - this.transform.position;
-        diff.Normalize();
+        var _target = GameObject.Find("Main Camera").transform;
+        var _diff = _target.position - this.transform.position;
+        _diff.Normalize();
 
         const float moveSpeed = 0.2f;
 
-        var velocity = diff * moveSpeed;
-        _position += velocity * Time.deltaTime;
-        _position.z -= moveSpeed;
+        var _velocity = _diff * moveSpeed;
+        var _moveVec = _velocity * Time.deltaTime;
+        _moveVec.z = -moveSpeed;
+        _position += _moveVec;
         this.transform.position = _position;
 
         if (this.transform.position.z < -10.0f)
         {
             Destroy(this);
         }
-
+    }
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.TryGetComponent<Bullet>(out var bullet))
+        {
+            bullet.SetActive(false);
+            gameObject.SetActive(false);
+        }
     }
 }
