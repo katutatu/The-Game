@@ -4,34 +4,33 @@ using UnityEngine;
 
 public class FieldObjectFactory : MonoBehaviour
 {
-    [SerializeField]
-    private FieldObjectBase _fieldObjectRigPrefab = null;
-    [SerializeField]
-    private GameObject[] _fieldObjectModelPrefabs = null;
-
-
-    public FieldObjectBase CreateFieldObject(string assetName)
+    /**これつけないと構造体がUnity上に出ない罠*/
+    [System.Serializable]
+    public struct RigPrefabData
     {
-        var fieldObjectRigPrefab = _fieldObjectRigPrefab;
-        //var fieldObjectModelPrefab = GetFieldObjectModelPrefab(assetName);
-
-        var fieldObjectRig = Object.Instantiate(fieldObjectRigPrefab);
-        //var fieldObjectModel = Object.Instantiate(fieldObjectModelPrefab);
-
-        //fieldObjectModel.transform.SetParent(fieldObjectRig.transform);
-
-        return fieldObjectRig;
+        /** オブジェクト種類のID*/
+        public string objectTypeID;
+        /** すぽーんざひょー */
+        public FieldObjectBase RigPrefab;
     }
 
-    private GameObject GetFieldObjectModelPrefab(string assetName)
+    public RigPrefabData[] FieldObjectRigPrefabs;
+
+    [SerializeField]
+    public Dictionary<string, FieldObjectBase> _ = new Dictionary<string, FieldObjectBase>();
+
+    public FieldObjectBase CreateFieldObject(string objectTypeID)
     {
-        foreach (var fieldObjectModelPrefab in _fieldObjectModelPrefabs)
+        foreach (var Prefab in FieldObjectRigPrefabs)
         {
-            if (fieldObjectModelPrefab.name == assetName)
+            if (Prefab.objectTypeID.Equals(objectTypeID)) 
             {
-                return fieldObjectModelPrefab;
-            }
+                var fieldObjectRig = Object.Instantiate(Prefab.RigPrefab);
+                return fieldObjectRig;
+            } 
         }
+
+        Debug.Assert(false);
         return null;
     }
 }

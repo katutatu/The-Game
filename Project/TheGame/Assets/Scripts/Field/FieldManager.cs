@@ -8,11 +8,11 @@ public class FieldManager
 
     public FieldObjectFactory _fieldObjectfactry;
 
-    public FieldObjectBase CreateFieldObject(string objectID, string assetName)
+    public FieldObjectBase CreateFieldObject(string uniqueID, string objectTypeID)
     {
-        var fieldObject = _fieldObjectfactry.CreateFieldObject(assetName);
+        var fieldObject = _fieldObjectfactry.CreateFieldObject(objectTypeID);
         Debug.Assert(fieldObject);
-        _fieldObjects.Add(objectID, fieldObject);
+        _fieldObjects.Add(uniqueID, fieldObject);
         return fieldObject;
     }
 

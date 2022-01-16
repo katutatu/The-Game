@@ -932,6 +932,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1213289511, guid: 85fdc7b510789aa4d938044b8835e700, type: 3}
+      propertyPath: FieldObjectRigPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213289511, guid: 85fdc7b510789aa4d938044b8835e700, type: 3}
+      propertyPath: FieldObjectRigPrefabs.Array.data[0].RigPrefab
+      value: 
+      objectReference: {fileID: -7758144715005998724, guid: d2f192c371f0f7f408ef6d3471aa68ca, type: 3}
+    - target: {fileID: 1213289511, guid: 85fdc7b510789aa4d938044b8835e700, type: 3}
+      propertyPath: FieldObjectRigPrefabs.Array.data[0].objectTypeID
+      value: Rock
+      objectReference: {fileID: 0}
     - target: {fileID: 2003378966798316727, guid: 85fdc7b510789aa4d938044b8835e700, type: 3}
       propertyPath: m_Name
       value: BattleRequiredData
