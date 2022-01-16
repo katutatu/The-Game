@@ -8,5 +8,5 @@ public static class BattleFixedParams
     public const float BattleObjectScrollSpeed = 1.0f;
 
     /// <summary>自機との距離から</summary>
-    public const float SpawnDistanceZ = 20.0f;
+    public const float SpawnDistanceZ = 50.0f;
 }

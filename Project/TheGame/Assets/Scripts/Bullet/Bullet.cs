@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
             transform.position += transform.forward * MoveSpeed * Time.deltaTime;
         }
 
-        if (transform.position.z <= -10.0f || transform.position.z >= 50.0f)
+        if (transform.position.z <= -10.0f || transform.position.z >= BattleFixedParams.SpawnDistanceZ)
         {
             SetActive(false);
         }

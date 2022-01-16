@@ -16,7 +16,7 @@ MonoBehaviour:
   - id: PLANE_DATA_0001
     asset_name: PlayerPlaneV1
     stock: 5
-    move_speed: 5
+    move_speed: 7.5
     weapon_id: WEAPON_DATA_0001
     score: 0
   - id: PLANE_DATA_1001
