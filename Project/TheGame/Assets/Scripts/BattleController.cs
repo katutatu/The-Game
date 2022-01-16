@@ -37,7 +37,13 @@ public class BattleController : MonoBehaviour
             foreach (var planeSpawnInfo in planeSpawnInfoList)
             {
                 var cPlane = _planeManager.CreatePlane(MasterData.Instance.FindPlaneData(planeSpawnInfo.Id), _bulletManager, false);
-                cPlane.OnDied += () => { _scoreManager.UpdateScore(cPlane.Score); };
+                cPlane.OnDied += (DeadCause deadCause) =>
+                {
+                    if (deadCause.Equals(DeadCause.Shoot))
+                    {
+                        _scoreManager.UpdateScore(cPlane.Score);
+                    }
+                };
                 cPlane.transform.position = planeSpawnInfo.transform.position;
                 cPlane.transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
                 _pilotManager.CreateComPilot(cPlane, pPlane);

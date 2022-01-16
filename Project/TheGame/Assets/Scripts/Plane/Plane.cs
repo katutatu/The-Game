@@ -25,6 +25,13 @@ public enum TeamTypes
     Enemy,
 }
 
+public enum DeadCause
+{
+    None,
+    Shoot,
+    Other,
+}
+
 /// <summary>機体クラス</summary>
 public class Plane : MonoBehaviour, IPlaneCockpit
 {
@@ -61,8 +68,8 @@ public class Plane : MonoBehaviour, IPlaneCockpit
 
     /// <summary>被ダメージ時イベント 引数: ダメージ後の残機数</summary>
     public System.Action<int> OnDamaged;
-    /// <summary>死亡時イベント</summary>
-    public System.Action OnDied;
+    /// <summary>死亡時イベント 引数: 死んだ起因</summary>
+    public System.Action<DeadCause> OnDied;
 
 
     private float _bulletShootIntervalCount;
@@ -117,7 +124,7 @@ public class Plane : MonoBehaviour, IPlaneCockpit
         gameObject.SetLayerRecursively(TeamType == TeamTypes.Player ? Layer.PlayerPlane : Layer.EnemyPlane);
     }
 
-    public void ReceiveDamage()
+    public void ReceiveDamage(DeadCause deadCause)
     {
         if (IsDead) { return; }
 
@@ -127,7 +134,7 @@ public class Plane : MonoBehaviour, IPlaneCockpit
         if (IsDead)
         {
             Hide();
-            OnDied?.Invoke();
+            OnDied?.Invoke(deadCause);
         }
     }
 
@@ -151,13 +158,13 @@ public class Plane : MonoBehaviour, IPlaneCockpit
     {
         if (collider.gameObject.TryGetComponent<Bullet>(out var bullet))
         {
-            ReceiveDamage();
+            ReceiveDamage(DeadCause.Shoot);
             bullet.SetActive(false);
         }
 
         if (collider.gameObject.TryGetComponent<Rock>(out var rock))
         {
-            ReceiveDamage();
+            ReceiveDamage(DeadCause.Other);
         }
     }
 }
