@@ -16,6 +16,6 @@ public class ComPilot : Pilot
     public override void TickActive()
     {
         _plane.Move(Vector3.back);
-        _plane.Shoot(_playerPlane.Position - _plane.Position);
+        _plane.Shoot(Vector3.back);
     }
 }

@@ -6,17 +6,20 @@ using System.Linq;
 /// <summary>バトル操作クラス</summary>
 public class BattleController : MonoBehaviour
 {
+    private BattleCamera _camera;
+
     private PlaneManager _planeManager = new PlaneManager();
     private PilotManager _pilotManager = new PilotManager();
     private BulletManager _bulletManager = new BulletManager();
     private ScoreManager _scoreManager = new ScoreManager();
     private FieldManager _fieldManager = new FieldManager();
 
-    private Plane _plaerPlane;
+    private Plane _playerPlane;
 
 
     private void Start()
     {
+        _camera = FindObjectOfType<BattleCamera>();
         UIManager.Instance.Setup();
         _planeManager.Setup(FindObjectOfType<PlaneFactory>());
         _fieldManager.Setup(FindObjectOfType<FieldObjectFactory>());
@@ -46,7 +49,9 @@ public class BattleController : MonoBehaviour
 
         _scoreManager.OnScoreChanged += (int score) => { UIController.UpdateScoreUI(score); };
 
-        _plaerPlane = pPlane;
+        _playerPlane = pPlane;
+
+        _camera.SetTargetPlane(_playerPlane);
     }
 
     private void Update()
@@ -58,6 +63,6 @@ public class BattleController : MonoBehaviour
 
     public bool IsEnd()
     {
-        return _plaerPlane != null && _plaerPlane.IsDead;
+        return _playerPlane != null && _playerPlane.IsDead;
     }
 }
