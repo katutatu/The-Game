@@ -17,17 +17,17 @@ MonoBehaviour:
     asset_name: PlayerPlaneV1
     stock: 5
     move_speed: 5
-    bullet_shoot_interval: 0.1
+    weapon_id: WEAPON_DATA_0001
     score: 0
   - id: PLANE_DATA_1001
     asset_name: ComPlaneV1
     stock: 1
     move_speed: 0
-    bullet_shoot_interval: 0.25
+    weapon_id: WEAPON_DATA_0002
     score: 100
   - id: PLANE_DATA_1002
     asset_name: ComPlaneV1
     stock: 1
     move_speed: 2.5
-    bullet_shoot_interval: 0.5
+    weapon_id: WEAPON_DATA_0002
     score: 125

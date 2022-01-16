@@ -220,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _planeDataListSO: {fileID: 11400000, guid: a1f6acac2fbc7d043bdbe7c7cb890bc2, type: 2}
   _bulletDataListSO: {fileID: 11400000, guid: 513183eacd25f974391feb582e70bdff, type: 2}
+  _weaopnDataListSO: {fileID: 11400000, guid: 09e5bbe7a0aedc743bc7b0ffe3cca657, type: 2}
 --- !u!4 &1320034607
 Transform:
   m_ObjectHideFlags: 0

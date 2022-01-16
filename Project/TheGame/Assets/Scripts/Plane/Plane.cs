@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>機体操作インターフェース</summary>
 public interface IPlaneCockpit : IPlaneReadOnly
 {
-    void Shoot();
+    void Shoot(Vector3 vec);
     void Move(Vector3 vec);
 }
 
@@ -28,6 +28,9 @@ public enum TeamTypes
 /// <summary>機体クラス</summary>
 public class Plane : MonoBehaviour, IPlaneCockpit
 {
+    [SerializeField]
+    private Weapon _weapon = null;
+
     /// <summary>所属陣営</summary>
     public TeamTypes TeamType { get; private set; }
 
@@ -47,13 +50,10 @@ public class Plane : MonoBehaviour, IPlaneCockpit
     public int Stock { get; private set; }
 
     /// <summary>座標</summary>
-    public Vector3 Position { get; private set; }
+    public Vector3 Position { get { return transform.position; } }
 
     /// <summary>移動速度</summary>
     public float MoveSpeed { get; private set; }
-
-    /// <summary>弾発射間隔</summary>
-    public float BulletShootInterval { get; private set; }
 
     /// <summary>撃破時のスコア</summary>
     public int Score { get; private set; }
@@ -75,11 +75,10 @@ public class Plane : MonoBehaviour, IPlaneCockpit
         IsPlayerPlane = isPlayerPlane;
         SetTeam(isPlayerPlane ? TeamTypes.Player : TeamTypes.Enemy); // 味方のような概念はないのでとりあえずこれで良いはず
         Stock = planeData.stock;
-        BulletShootInterval = planeData.bullet_shoot_interval;
         MoveSpeed = planeData.move_speed;
         Score = planeData.score;
 
-        _bulletShootSystem = bulletShootSystem;
+        _weapon.Setup(MasterData.Instance.FindWeaponData(planeData.weapon_id), bulletShootSystem, TeamType);
 
         Hide();
     }
@@ -132,16 +131,11 @@ public class Plane : MonoBehaviour, IPlaneCockpit
         }
     }
 
-    public void Shoot()
+    public void Shoot(Vector3 vec)
     {
         if (IsDead) { return; }
 
-        _bulletShootIntervalCount += Time.deltaTime;
-        if (_bulletShootIntervalCount >= BulletShootInterval)
-        {
-            _bulletShootIntervalCount = 0.0f;
-            _bulletShootSystem.Shoot(MasterData.Instance.FindBulletData("BULLET_DATA_0001"), TeamType, transform.position, transform.forward);
-        }
+        _weapon.Shoot(transform.position, vec);
     }
 
     public void Move(Vector3 vec)

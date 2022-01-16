@@ -8,6 +8,8 @@ public class MasterData : SingletonMonoBehaviour<MasterData>
     private PlaneDataListSO _planeDataListSO = null;
     [SerializeField]
     private BulletDataListSO _bulletDataListSO = null;
+    [SerializeField]
+    private WeaponDataListSO _weaopnDataListSO = null;
 
 
     public PlaneData FindPlaneData(string id)
@@ -18,5 +20,10 @@ public class MasterData : SingletonMonoBehaviour<MasterData>
     public BulletData FindBulletData(string id)
     {
         return _bulletDataListSO?.Find(id);
+    }
+
+    public WeaponData FindWeaponData(string id)
+    {
+        return _weaopnDataListSO?.Find(id);
     }
 }

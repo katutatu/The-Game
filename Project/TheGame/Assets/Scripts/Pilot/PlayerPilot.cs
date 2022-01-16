@@ -31,7 +31,7 @@ public class PlayerPilot : Pilot
 
         if (Input.GetMouseButton(0))
         {
-            _plane.Shoot();
+            _plane.Shoot(Vector3.forward);
         }
     }
 }

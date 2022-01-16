@@ -14,8 +14,8 @@ public class PlaneData : DataBase
     /// <summary>移動速度</summary>
     public float move_speed;
 
-    /// <summary>弾発射間隔</summary>
-    public float bullet_shoot_interval;
+    /// <summary>武器ID</summary>
+    public string weapon_id;
 
     /// <summary>撃破時のスコア</summary>
     public int score;
