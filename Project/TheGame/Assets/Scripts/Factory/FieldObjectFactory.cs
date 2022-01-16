@@ -10,14 +10,11 @@ public class FieldObjectFactory : MonoBehaviour
     {
         /** オブジェクト種類のID*/
         public string objectTypeID;
-        /** すぽーんざひょー */
+        /** プレハブ */
         public FieldObjectBase RigPrefab;
     }
 
     public RigPrefabData[] FieldObjectRigPrefabs;
-
-    [SerializeField]
-    public Dictionary<string, FieldObjectBase> _ = new Dictionary<string, FieldObjectBase>();
 
     public FieldObjectBase CreateFieldObject(string objectTypeID)
     {

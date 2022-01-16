@@ -390,7 +390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4947852616019709117, guid: 45c7970398b35e84b92532582a40e062, type: 3}
       propertyPath: SpawnList.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4947852616019709117, guid: 45c7970398b35e84b92532582a40e062, type: 3}
       propertyPath: SpawnList.Array.data[0].uniqueID
@@ -419,6 +419,10 @@ PrefabInstance:
     - target: {fileID: 4947852616019709117, guid: 45c7970398b35e84b92532582a40e062, type: 3}
       propertyPath: SpawnList.Array.data[6].uniqueID
       value: Rock07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947852616019709117, guid: 45c7970398b35e84b92532582a40e062, type: 3}
+      propertyPath: SpawnList.Array.data[7].uniqueID
+      value: Gate01
       objectReference: {fileID: 0}
     - target: {fileID: 4947852616019709117, guid: 45c7970398b35e84b92532582a40e062, type: 3}
       propertyPath: SpawnList.Array.data[0].spawnPos.x
@@ -505,6 +509,18 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4947852616019709117, guid: 45c7970398b35e84b92532582a40e062, type: 3}
+      propertyPath: SpawnList.Array.data[7].spawnPos.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947852616019709117, guid: 45c7970398b35e84b92532582a40e062, type: 3}
+      propertyPath: SpawnList.Array.data[7].spawnPos.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947852616019709117, guid: 45c7970398b35e84b92532582a40e062, type: 3}
+      propertyPath: SpawnList.Array.data[7].spawnPos.z
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947852616019709117, guid: 45c7970398b35e84b92532582a40e062, type: 3}
       propertyPath: SpawnList.Array.data[0].objectTypeID
       value: Rock
       objectReference: {fileID: 0}
@@ -531,6 +547,10 @@ PrefabInstance:
     - target: {fileID: 4947852616019709117, guid: 45c7970398b35e84b92532582a40e062, type: 3}
       propertyPath: SpawnList.Array.data[6].objectTypeID
       value: Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947852616019709117, guid: 45c7970398b35e84b92532582a40e062, type: 3}
+      propertyPath: SpawnList.Array.data[7].objectTypeID
+      value: Gate
       objectReference: {fileID: 0}
     - target: {fileID: 8611779272415226344, guid: 45c7970398b35e84b92532582a40e062, type: 3}
       propertyPath: m_Name
@@ -836,18 +856,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1213289511, guid: 85fdc7b510789aa4d938044b8835e700, type: 3}
-      propertyPath: FieldObjectRigPrefabs.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1213289511, guid: 85fdc7b510789aa4d938044b8835e700, type: 3}
-      propertyPath: FieldObjectRigPrefabs.Array.data[0].RigPrefab
-      value: 
-      objectReference: {fileID: -7758144715005998724, guid: d2f192c371f0f7f408ef6d3471aa68ca, type: 3}
-    - target: {fileID: 1213289511, guid: 85fdc7b510789aa4d938044b8835e700, type: 3}
-      propertyPath: FieldObjectRigPrefabs.Array.data[0].objectTypeID
-      value: Rock
-      objectReference: {fileID: 0}
     - target: {fileID: 2003378966798316727, guid: 85fdc7b510789aa4d938044b8835e700, type: 3}
       propertyPath: m_Name
       value: BattleRequiredData

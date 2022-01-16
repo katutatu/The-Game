@@ -205,7 +205,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8d4e6eefe64ec4e8672cf172c1eeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FieldObjectRigPrefabs: []
+  FieldObjectRigPrefabs:
+  - objectTypeID: Rock
+    RigPrefab: {fileID: -7758144715005998724, guid: d2f192c371f0f7f408ef6d3471aa68ca, type: 3}
+  - objectTypeID: Gate
+    RigPrefab: {fileID: -4878023737573093130, guid: 14fb00da0e33940448e682c534f283dd, type: 3}
 --- !u!1001 &3766344806699319792
 PrefabInstance:
   m_ObjectHideFlags: 0
