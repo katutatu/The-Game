@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3317232}
   - component: {fileID: 2317232}
   - component: {fileID: 9517232}
-  - component: {fileID: 3735667441434313971}
+  - component: {fileID: -6625417798610144446}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -102,7 +102,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3735667441434313971
+--- !u!114 &-6625417798610144446
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,4 +114,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1978ed4d7cd4f3a4780245b8afcd7e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_prefab: {fileID: 117232}
   lifetime: 5

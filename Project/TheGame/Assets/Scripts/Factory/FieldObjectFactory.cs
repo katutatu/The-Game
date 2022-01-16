@@ -20,7 +20,7 @@ public class FieldObjectFactory : MonoBehaviour
 
         //fieldObjectModel.transform.SetParent(fieldObjectRig.transform);
 
-        return Object.Instantiate(fieldObjectRigPrefab);
+        return fieldObjectRig;
     }
 
     private GameObject GetFieldObjectModelPrefab(string assetName)

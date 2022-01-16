@@ -2,20 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FieldManager : SingletonMonoBehaviour<FieldManager>
+public class FieldManager 
 {
-    private Dictionary<string, FieldObjectBase> _fieldObjects = new Dictionary<string, FieldObjectBase>();
+    public Dictionary<string, FieldObjectBase> _fieldObjects = new Dictionary<string, FieldObjectBase>();
 
-    private FieldObjectFactory _fieldObjectfactry;
+    public FieldObjectFactory _fieldObjectfactry;
 
     public FieldObjectBase CreateFieldObject(string objectID, string assetName)
     {
-        if (_fieldObjects.ContainsKey(objectID))
-        {
-            //すでにある場合は作りません！！！！！！
-            return null;
-        }
-
         var fieldObject = _fieldObjectfactry.CreateFieldObject(assetName);
         Debug.Assert(fieldObject);
         _fieldObjects.Add(objectID, fieldObject);
@@ -36,7 +30,7 @@ public class FieldManager : SingletonMonoBehaviour<FieldManager>
 
     public void CreateAndSetupStageFieldObjects()
     {
-        var spawnData = FindObjectOfType<FieldObjectSpawnInfo>();
+        var spawnData = GameObject.FindObjectOfType<FieldObjectSpawnInfo>();
         foreach (var data in spawnData.SpawnList)
         {
             var objectData = CreateFieldObject(data.uniqueID, data.objectTypeID);

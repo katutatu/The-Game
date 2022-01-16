@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class Rock : FieldObjectBase
 {
-    public float lifetime = 5.0f;
-    private Vector3 velocity;
-    private Transform target;
-    private float period = 3.0f;
-
     void Start()
     {
-        Destroy(this.gameObject, lifetime);
-        target = GameObject.Find("Main Camera").transform;
+
     }
 
     void Update()
@@ -23,28 +17,22 @@ public class Rock : FieldObjectBase
         _transform.Rotate(_rotateSpeed);
 
         Vector3 _position = _transform.position;
-        //岩移動のスピード
-        const float _moveSpeed = 0.1f;
-        //_transform.position = _pos;
 
-        var acceleration = Vector3.zero;
+        var target = GameObject.Find("Main Camera").transform;
+        var diff = target.position - this.transform.position;
+        diff.Normalize();
 
-        var diff = target.position - _position;
-        acceleration += (diff - velocity * period) * 2f
-                    / (period * period);
-        period -= Time.deltaTime;
-        if (period < 0f)
-        {
-            return;
-        }
-        if (acceleration.magnitude > 100f)
-        {
-            acceleration = acceleration.normalized * 100f;
-        }
+        const float moveSpeed = 0.2f;
 
-        velocity += acceleration * Time.deltaTime;
+        var velocity = diff * moveSpeed;
         _position += velocity * Time.deltaTime;
-        _position.z -= _moveSpeed;
+        _position.z -= moveSpeed;
         this.transform.position = _position;
+
+        if (this.transform.position.z < -10.0f)
+        {
+            Destroy(this);
+        }
+
     }
 }
