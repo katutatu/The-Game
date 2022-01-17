@@ -44,6 +44,9 @@ public class PlaneManager
 
         _planes.Add(plane);
 
+        var trailEffect = EffectManager.Instance.GetEffect("SmokeTrail 3d");
+        trailEffect.SetParent(plane.transform);
+
         return plane;
     }
 

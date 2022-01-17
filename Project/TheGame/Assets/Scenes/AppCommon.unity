@@ -369,6 +369,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effectPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7255864768930533875, guid: 4f3fbc2ee3f540a469cda95159007469, type: 3}

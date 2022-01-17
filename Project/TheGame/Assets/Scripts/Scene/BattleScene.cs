@@ -17,12 +17,15 @@ public class BattleScene : Scene
     public override void StartScene()
     {
         _battleController = FindObjectOfType<BattleController>();
+        _battleController.Setup();
     }
 
     public override void Tick()
     {
         if (_endType == EndType.None)
         {
+            _battleController.Tick();
+
             if(_battleController != null)
             {
                 if(_battleController.IsClearGame())

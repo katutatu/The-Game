@@ -17,7 +17,7 @@ public class BattleController : MonoBehaviour
     private Plane _playerPlane;
 
 
-    private void Start()
+    public void Setup()
     {
         _camera = FindObjectOfType<BattleCamera>();
         UIManager.Instance.Setup();
@@ -60,7 +60,7 @@ public class BattleController : MonoBehaviour
         _camera.SetTargetPlane(_playerPlane);
     }
 
-    private void Update()
+    public void Tick()
     {
         _pilotManager.Tick();
         _planeManager.Tick();

@@ -11,6 +11,25 @@ public class EffectManager : SingletonMonoBehaviour<EffectManager>
     private Dictionary<string, List<Effect>> _effectTable = new Dictionary<string, List<Effect>>();
 
 
+    public void Setup()
+    {
+        foreach (var effectPrefab in _effectPrefabs)
+        {
+            _effectTable.Add(effectPrefab.name, new List<Effect>());
+        }
+    }
+
+    public void Tick()
+    {
+        foreach (var effectList in _effectTable.Values)
+        {
+            foreach (var effect in effectList)
+            {
+                effect.Tick();
+            }
+        }
+    }
+
     public IEffect GetEffect(string assetName)
     {
         if (_effectTable.TryGetValue(assetName, out var effects))
@@ -22,12 +41,15 @@ public class EffectManager : SingletonMonoBehaviour<EffectManager>
                     return effect;
                 }
             }
-        }
 
-        var effectPrefab = GetEffectPrefab(assetName);
-        if (effectPrefab != null)
-        {
-            return Instantiate(effectPrefab);
+            var effectPrefab = GetEffectPrefab(assetName);
+            if (effectPrefab != null)
+            {
+                var effect = Instantiate(effectPrefab);
+                effect.Setup();
+                effects.Add(effect);
+                return effect;
+            }
         }
 
         return null;
