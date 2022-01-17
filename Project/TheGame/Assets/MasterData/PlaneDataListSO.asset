@@ -28,6 +28,6 @@ MonoBehaviour:
   - id: PLANE_DATA_1002
     asset_name: ComPlaneV1
     stock: 1
-    move_speed: 2.5
+    move_speed: 10
     weapon_id: WEAPON_DATA_0002
     score: 125
