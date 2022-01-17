@@ -8,11 +8,17 @@ public class StageSelectScene : Scene
     {
         if (Input.GetMouseButton(0))
         {
-            SceneManager.Instance.ChangeScene(SceneNames.Stage1);
+            ChangeScene(SceneNames.Stage1);
         }
         if (Input.GetMouseButton(1))
         {
-            SceneManager.Instance.ChangeScene(SceneNames.Stage2);
+            ChangeScene(SceneNames.Stage2);
         }
+    }
+
+    private void ChangeScene(string sceneName)
+    {
+        SceneManager.Instance.ChangeScene(sceneName);
+        SoundManager.Instance.Play(SoundNames.SE_Enter);
     }
 }

@@ -9,6 +9,7 @@ public class ResultScene : Scene
         if (Input.GetMouseButton(0))
         {
             SceneManager.Instance.ChangeScene(SceneNames.Title);
+            SoundManager.Instance.Play(SoundNames.SE_Enter);
         }
     }
 }

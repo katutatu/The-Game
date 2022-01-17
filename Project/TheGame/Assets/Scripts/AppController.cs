@@ -21,6 +21,7 @@ public class AppController : SingletonMonoBehaviour<AppController>
         // アプリ設定
         Application.targetFrameRate = 60;
 
+        SoundManager.Instance.Setup();
 #if UNITY_EDITOR
         FPSCounter.CreateIfNull();
 #endif
