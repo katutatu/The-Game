@@ -17,11 +17,4 @@ public class Gate : FieldObjectBase
         pos.z -= 0.2f;
         this.transform.position = pos;
     }
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.gameObject.TryGetComponent<Plane>(out var bullet))
-        {
-
-        }
-    }
 }

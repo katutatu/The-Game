@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class BattleScene : Scene
 {
-    private bool _isEnd;
-    private BattleController _battleController;
+    enum EndType
+    {
+        None,
+        Clear,
+        Dead,
+    }
 
+    private EndType _endType;
+    private BattleController _battleController;
 
     public override void StartScene()
     {
@@ -15,10 +21,21 @@ public class BattleScene : Scene
 
     public override void Tick()
     {
-        if (!_isEnd)
+        if (_endType == EndType.None)
         {
-            _isEnd = _battleController != null && _battleController.IsEnd();
-            if (_isEnd)
+            if(_battleController != null)
+            {
+                if(_battleController.IsClearGame())
+                {
+                    _endType = EndType.Clear;
+                }
+                else if(_battleController.IsDeadPlayer())
+                {
+                    _endType = EndType.Dead;
+                }
+            }
+
+            if (_endType != EndType.None)
             {
                 SceneManager.Instance.ChangeScene(SceneNames.Result);
             }

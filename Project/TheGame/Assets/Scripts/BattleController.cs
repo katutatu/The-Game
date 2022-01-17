@@ -67,8 +67,13 @@ public class BattleController : MonoBehaviour
         _bulletManager.Tick();
     }
 
-    public bool IsEnd()
+    public bool IsDeadPlayer()
     {
         return _playerPlane != null && _playerPlane.IsDead;
+    }
+    
+    public bool IsClearGame()
+    {
+        return _playerPlane != null && _playerPlane.IsHitGoal;
     }
 }

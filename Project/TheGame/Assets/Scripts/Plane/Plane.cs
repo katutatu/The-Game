@@ -65,6 +65,9 @@ public class Plane : MonoBehaviour, IPlaneCockpit
     /// <summary>撃破時のスコア</summary>
     public int Score { get; private set; }
 
+    /// <summary>ゴールに当たったか</summary>
+    public bool IsHitGoal { get; private set; } = false;
+
 
     /// <summary>被ダメージ時イベント 引数: ダメージ後の残機数</summary>
     public System.Action<int> OnDamaged;
@@ -165,6 +168,15 @@ public class Plane : MonoBehaviour, IPlaneCockpit
         if (collider.gameObject.TryGetComponent<Rock>(out var rock))
         {
             ReceiveDamage(DeadCause.Other);
+        }
+
+        if (collider.gameObject.TryGetComponent<Gate>(out var gate))
+        {
+            if (IsPlayerPlane)
+            {            
+                //ゴールに当たった
+                IsHitGoal = true;
+            }
         }
     }
 }
