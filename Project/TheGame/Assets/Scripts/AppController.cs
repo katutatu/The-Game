@@ -27,6 +27,15 @@ public class AppController : SingletonMonoBehaviour<AppController>
         FPSCounter.CreateIfNull();
 #endif
 
+        SceneManager.Instance.OnPreStartScene += (string sceneName) => 
+        {
+            UIManager.Instance.BindSceneUI(sceneName);
+        };
+        SceneManager.Instance.OnPreEndScene += () =>
+        {
+            UIManager.Instance.UnbindSceneUI();
+        };
+
         // SceneManager初期化中に他のManagerクラスを使用するため最後に初期化
         var startSceneName = SceneManager.Instance.GetActiveSceneName();
         SceneManager.Instance.ChangeScene(startSceneName);

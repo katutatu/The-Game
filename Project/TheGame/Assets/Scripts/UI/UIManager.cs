@@ -12,20 +12,45 @@ public enum BattleUITypes
     Score,
 }
 
+public enum ResultUITypes
+{
+    /// <summary>なし</summary>
+    None,
+    /// <summary>スコア</summary>
+    Score,
+}
+
 /// <summary>全てのシーンのUIを管理するクラス</summary>
 public class UIManager : SingletonMonoBehaviour<UIManager>
 {
     private BattleUI _battleUI;
+    private ResultUI _resultUI;
 
 
-    public void Setup()
+    public void BindSceneUI(string sceneName)
     {
-        // 仮 シーンが一つしかないのでこれで上手くいってるだけ
-        _battleUI = FindObjectOfType<BattleUI>();
+        if (SceneNames.IsBattleSceneName(sceneName))
+        {
+            _battleUI = FindObjectOfType<BattleUI>();
+        }
+        else if (sceneName == SceneNames.Result)
+        {
+            _resultUI = FindObjectOfType<ResultUI>();
+        }
+    }
+
+    public void UnbindSceneUI()
+    {
+        _battleUI = null;
+        _resultUI = null;
     }
 
     public UIBase GetUI(BattleUITypes battleUIType)
     {
         return _battleUI?.GetUI(battleUIType);
+    }
+    public UIBase GetUI(ResultUITypes resultUIType)
+    {
+        return _resultUI?.GetUI(resultUIType);
     }
 }

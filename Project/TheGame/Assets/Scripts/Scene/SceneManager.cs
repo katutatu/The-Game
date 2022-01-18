@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SceneManager : SingletonMonoBehaviour<SceneManager>
 {
+    public System.Action<string> OnPreStartScene;
+    public System.Action OnPreEndScene;
+
+
     private bool _isSceneChanging;
     private Scene _scene;
 
@@ -44,6 +48,7 @@ public class SceneManager : SingletonMonoBehaviour<SceneManager>
 
         if (_scene != null)
         {
+            OnPreEndScene?.Invoke();
             _scene.EndScene();
             yield return _scene.EndSceneAsync();
             Destroy(_scene);
@@ -51,28 +56,30 @@ public class SceneManager : SingletonMonoBehaviour<SceneManager>
 
         yield return UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
 
-        switch (sceneName)
+        if (sceneName == SceneNames.Title)
         {
-            case SceneNames.Title:
-                _scene = gameObject.AddComponent<TitleScene>();
-                break;
-            case SceneNames.StageSelect:
-                _scene = gameObject.AddComponent<StageSelectScene>();
-                break;
-            case SceneNames.Stage1:
-            case SceneNames.Stage2:
-                _scene = gameObject.AddComponent<BattleScene>();
-                break;
-            case SceneNames.Result:
-                _scene = gameObject.AddComponent<ResultScene>();
-                break;
-            default:
-                Debug.LogError("Not implemented Scene.");
-                break;
+            _scene = gameObject.AddComponent<TitleScene>();
+        }
+        else if (sceneName == SceneNames.StageSelect)
+        {
+            _scene = gameObject.AddComponent<StageSelectScene>();
+        }
+        else if (SceneNames.IsBattleSceneName(sceneName))
+        {
+            _scene = gameObject.AddComponent<BattleScene>();
+        }
+        else if (sceneName == SceneNames.Result)
+        {
+            _scene = gameObject.AddComponent<ResultScene>();
+        }
+        else
+        {
+            Debug.LogError("Not implemented Scene.");
         }
 
         if (_scene != null)
         {
+            OnPreStartScene?.Invoke(sceneName);
             _scene.StartScene();
             yield return _scene.StartSceneAsync();
         }

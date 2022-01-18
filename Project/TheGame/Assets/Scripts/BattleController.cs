@@ -25,7 +25,6 @@ public class BattleController : MonoBehaviour
     public void Setup()
     {
         _camera = FindObjectOfType<BattleCamera>();
-        UIManager.Instance.Setup();
         _planeManager.Setup(FindObjectOfType<PlaneFactory>());
         _bulletManager.Setup(FindObjectOfType<BulletFactory>());
         _fieldManager.Setup(FindObjectOfType<FieldObjectFactory>());
@@ -94,6 +93,7 @@ public class BattleController : MonoBehaviour
 
     public void End()
     {
+        BattleResult.Score = _scoreManager.Score;
         EffectManager.Instance.SetAllActive(EffectNames.PlaneTrail, false);
     }
 

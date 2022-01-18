@@ -24,4 +24,14 @@ public static class UIController
             scoreUI.SetScore(score);
         }
     }
+
+    /// <summary>リザルトスコアUI更新</summary>
+    public static void UpdateResultScoreUI(int score)
+    {
+        var scoreUI = UIManager.Instance.GetUI(ResultUITypes.Score) as ResultScoreUI;
+        if (scoreUI != null)
+        {
+            scoreUI.SetScore(score);
+        }
+    }
 }
