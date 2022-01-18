@@ -27,6 +27,7 @@ public class BattleController : MonoBehaviour
         _camera = FindObjectOfType<BattleCamera>();
         UIManager.Instance.Setup();
         _planeManager.Setup(FindObjectOfType<PlaneFactory>());
+        _bulletManager.Setup(FindObjectOfType<BulletFactory>());
         _fieldManager.Setup(FindObjectOfType<FieldObjectFactory>());
 
         UIController.UpdateScoreUI(0);

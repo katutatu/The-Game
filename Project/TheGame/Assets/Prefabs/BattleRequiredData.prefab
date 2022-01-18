@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 8795496926072599234}
   - component: {fileID: 1681264320443522230}
   - component: {fileID: 1213289511}
+  - component: {fileID: 7706674638586131140}
   m_Layer: 0
   m_Name: BattleRequiredData
   m_TagString: Untagged
@@ -210,6 +211,20 @@ MonoBehaviour:
     RigPrefab: {fileID: -7758144715005998724, guid: d2f192c371f0f7f408ef6d3471aa68ca, type: 3}
   - objectTypeID: Gate
     RigPrefab: {fileID: -4878023737573093130, guid: 14fb00da0e33940448e682c534f283dd, type: 3}
+--- !u!114 &7706674638586131140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003378966798316727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5557977177fe504fa31c76304cd548d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefabs:
+  - {fileID: 3239331606836314648, guid: b92f7c4b98022da479e05523bcbdf051, type: 3}
 --- !u!1001 &3766344806699319792
 PrefabInstance:
   m_ObjectHideFlags: 0
