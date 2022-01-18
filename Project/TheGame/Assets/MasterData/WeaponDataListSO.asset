@@ -18,4 +18,4 @@ MonoBehaviour:
     shoot_interval: 0.1
   - id: WEAPON_DATA_0002
     bullet_id: BULLET_DATA_0002
-    shoot_interval: 1
+    shoot_interval: 2
