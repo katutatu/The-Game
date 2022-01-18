@@ -235,7 +235,8 @@ MonoBehaviour:
   _sePrefabs:
   - {fileID: -3348235112932727647, guid: a1a1c04363c1dda43b6ff8a49a1d6da4, type: 3}
   - {fileID: -3348235112932727647, guid: c3709796b0378bb40a12add66ceefb6b, type: 3}
-  _bgmPrefabs: []
+  _bgmPrefabs:
+  - {fileID: 794524589792157912, guid: 0a6e3bd31dd7b8b4ea82129c02f0a036, type: 3}
 --- !u!1 &1320034605
 GameObject:
   m_ObjectHideFlags: 0

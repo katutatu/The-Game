@@ -31,6 +31,8 @@ public class BattleController : MonoBehaviour
 
         UIController.UpdateScoreUI(0);
 
+        SoundManager.Instance.Play(SoundNames.BGM_Game);
+
         // 自機
         var pPlane = _planeManager.CreatePlane(MasterData.Instance.FindPlaneData("PLANE_DATA_0001"), _bulletManager, true);
         _pilotManager.CreatePlayerPilot(pPlane);
@@ -66,6 +68,7 @@ public class BattleController : MonoBehaviour
         _playerPlane = pPlane;
 
         _camera.SetTargetPlane(_playerPlane);
+
     }
 
     public void Tick()

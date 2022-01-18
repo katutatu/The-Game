@@ -6,6 +6,7 @@ public static class SoundNames
 {
     public const string SE_Enter = "Enter";
     public const string SE_Cancel = "Cancel";
+    public const string BGM_Game = "GameBGM";
 }
 
 public class SoundManager : SingletonMonoBehaviour<SoundManager>
@@ -41,6 +42,22 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         if (_seTable.TryGetValue(assetName, out var seList))
         {
             seList[0].Play();
+        }
+        else if (_bgmDict.TryGetValue(assetName, out var bgm))
+        {
+            bgm.Play();
+        }
+    }
+    
+    public void Stop(string assetName)
+    {
+        if (_seTable.TryGetValue(assetName, out var seList))
+        {
+            seList[0].Stop();
+        }
+        else if (_bgmDict.TryGetValue(assetName, out var bgm))
+        {
+            bgm.Stop();
         }
     }
 }

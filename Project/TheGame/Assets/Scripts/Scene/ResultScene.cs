@@ -19,6 +19,9 @@ public class ResultScene : Scene
     {
         if (Input.GetMouseButtonDown(0))
         {
+            //リザルトが始まった瞬間にBGMを消すと悲しいのでボタンを押すまでは残す
+            SoundManager.Instance.Stop(SoundNames.BGM_Game);
+            
             SceneManager.Instance.ChangeScene(SceneNames.Title);
             SoundManager.Instance.Play(SoundNames.SE_Enter);
         }
