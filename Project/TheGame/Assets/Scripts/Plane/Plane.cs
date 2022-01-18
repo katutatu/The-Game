@@ -157,7 +157,36 @@ public class Plane : MonoBehaviour, IPlaneCockpit
 
         // くそ適当
         var move = vec.normalized * MoveSpeed * Time.deltaTime;
-        transform.position += move;
+        var pos = transform.position;
+        pos += move;
+
+        float playerMovableSpaceX = 13.0f;
+        float playerMovableSpaceY = 9.0f;
+        if(pos.x < -playerMovableSpaceX)
+        {
+            pos.x = -playerMovableSpaceX;
+        }
+        
+        if(pos.x > playerMovableSpaceX)
+        {
+            pos.x = playerMovableSpaceX;
+        }
+
+        if (pos.y < 0.0f)
+        {
+            pos.y = 0.0f;
+        }
+
+        //ゴールに当たった場合は上へ飛んでいくのでこの判定は無視
+        if (!IsHitGoal)
+        {
+            if (pos.y > playerMovableSpaceY)
+            {
+                pos.y = playerMovableSpaceY;
+            }
+        }
+
+        transform.position = pos;
     }
 
     private void OnTriggerEnter(Collider collider)
