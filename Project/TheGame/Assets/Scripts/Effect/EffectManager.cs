@@ -6,6 +6,7 @@ public static class EffectNames
 {
     public const string PlaneTrail = "SmokeTrail 3d";
     public const string PlaneExplosion = "WFX_ExplosiveSmoke Small";
+    public const string RockSpark = "BasicSpark 2";
 }
 
 public class EffectManager : SingletonMonoBehaviour<EffectManager>

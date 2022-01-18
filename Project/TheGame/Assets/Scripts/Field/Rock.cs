@@ -41,6 +41,8 @@ public class Rock : FieldObjectBase
         {
             bullet.SetActive(false);
             gameObject.SetActive(false);
+            var explEffect = EffectManager.Instance.GetEffect(EffectNames.RockSpark);
+            explEffect.Play(transform.position);
         }
     }
 }
