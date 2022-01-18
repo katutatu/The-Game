@@ -18,6 +18,8 @@ public enum ResultUITypes
     None,
     /// <summary>スコア</summary>
     Score,
+    /// <summary>ハイスコア</summary>
+    High,
 }
 
 /// <summary>全てのシーンのUIを管理するクラス</summary>

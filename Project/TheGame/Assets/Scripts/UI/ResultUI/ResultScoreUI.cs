@@ -9,8 +9,8 @@ public class ResultScoreUI : UIBase
     private Text _text = null;
 
 
-    public void SetScore(int score)
+    public void SetScore(string title, int score)
     {
-        _text.text = "SCORE:" + score;
+        _text.text = title + ":" + score;
     }
 }

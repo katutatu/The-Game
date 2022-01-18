@@ -12,7 +12,19 @@ public class ResultScene : Scene
 {
     public override void StartScene()
     {
-        UIController.UpdateResultScoreUI(BattleResult.Score);
+        var score = BattleResult.Score;
+        var highScore = StaticUserData.Instance.high_score;
+        var hasUpdatedHighScore = score > highScore;
+
+        // UIのハイスコアは更新前のものを出す
+        UIController.UpdateResultScoreUI(score);
+        UIController.UpdateResultHighScoreUI(highScore);
+        // ユーザーデータのハイスコア更新
+        if (hasUpdatedHighScore)
+        {
+            StaticUserData.Instance.high_score = score;
+            StaticUserData.Save();
+        }
     }
 
     public override void Tick()
