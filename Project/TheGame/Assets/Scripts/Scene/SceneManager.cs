@@ -73,7 +73,6 @@ public class SceneManager : SingletonMonoBehaviour<SceneManager>
 
         if (_scene != null)
         {
-            Debug.Log("hoge");
             _scene.StartScene();
             yield return _scene.StartSceneAsync();
         }
