@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Playables;
 
 /// <summary>バトル操作クラス</summary>
 public class BattleController : MonoBehaviour
@@ -16,6 +17,10 @@ public class BattleController : MonoBehaviour
 
     private Plane _playerPlane;
 
+    private PlayableDirector _playableDirector;
+
+    private bool _isClearStage = false;
+    private bool _isPlayTimeline = false;
 
     public void Setup()
     {
@@ -69,6 +74,22 @@ public class BattleController : MonoBehaviour
         _pilotManager.Tick();
         _planeManager.Tick();
         _bulletManager.Tick();
+
+        //クリア演出
+        if (_playerPlane != null && _playerPlane.IsHitGoal)
+        {
+            if (!_isPlayTimeline)
+            {
+                _playableDirector = FindObjectOfType<PlayableDirector>();
+                //タイムラインの再生
+                _playableDirector.Play();
+                _isPlayTimeline = true;
+            }
+            else if (_playableDirector.state.Equals(PlayState.Paused))
+            {
+                _isClearStage = true;
+            }
+        }
     }
 
     public void End()
@@ -80,9 +101,9 @@ public class BattleController : MonoBehaviour
     {
         return _playerPlane != null && _playerPlane.IsDead;
     }
-    
+
     public bool IsClearGame()
     {
-        return _playerPlane != null && _playerPlane.IsHitGoal;
+        return _isClearStage;
     }
 }
