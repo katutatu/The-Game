@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField]
+    private Color _playerColor;
+    [SerializeField]
+    private Color _enemyColor;
+
+
     public string DataId { get; private set; }
     public bool IsActive { get; private set; }
     public TeamTypes TeamType { get; private set; }
@@ -22,7 +28,6 @@ public class Bullet : MonoBehaviour
         SetTeam(teamType);
         transform.position = position;
         transform.forward = direction.normalized;
-        transform.localScale = Vector3.one * 0.25f;
     }
 
     public void Tick()
@@ -48,5 +53,15 @@ public class Bullet : MonoBehaviour
     {
         TeamType = teamType;
         gameObject.SetLayerRecursively(TeamType == TeamTypes.Player ? Layer.PlayerBullet : Layer.EnemyBullet);
+        SetColor(teamType == TeamTypes.Player ? _playerColor : _enemyColor);
+    }
+
+    private void SetColor(Color color)
+    {
+        var r = GetComponentInChildren<Renderer>();
+        if (r != null)
+        {
+            r.material.color = color;
+        }
     }
 }

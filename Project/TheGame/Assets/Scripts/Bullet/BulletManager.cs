@@ -9,6 +9,8 @@ public interface IBulletShootSystem
 
 public class BulletManager : IBulletShootSystem
 {
+    private BulletFactory _bulletFactory;
+
     private List<Bullet> _bullets = new List<Bullet>();
 
 
@@ -41,10 +43,15 @@ public class BulletManager : IBulletShootSystem
 
     public Bullet CreateBullet(BulletData bulletData)
     {
-        var bullet = GameObject.CreatePrimitive(PrimitiveType.Sphere).AddComponent<Bullet>();
+        var bullet = _bulletFactory.CreateBullet(bulletData.asset_name);
         bullet.Setup(bulletData);
         _bullets.Add(bullet);
         return bullet;
+    }
+
+    public void Setup(BulletFactory bulletFactory)
+    {
+        _bulletFactory = bulletFactory;
     }
 
     public void Tick()
