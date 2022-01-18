@@ -31,7 +31,17 @@ public static class UIController
         var scoreUI = UIManager.Instance.GetUI(ResultUITypes.Score) as ResultScoreUI;
         if (scoreUI != null)
         {
-            scoreUI.SetScore(score);
+            scoreUI.SetScore("SCORE", score);
+        }
+    }
+
+    /// <summary>リザルトハイスコアUI更新</summary>
+    public static void UpdateResultHighScoreUI(int highScore)
+    {
+        var scoreUI = UIManager.Instance.GetUI(ResultUITypes.High) as ResultScoreUI;
+        if (scoreUI != null)
+        {
+            scoreUI.SetScore("HIGH SCORE", highScore);
         }
     }
 }

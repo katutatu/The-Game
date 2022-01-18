@@ -5,7 +5,9 @@ using UnityEngine;
 public class ResultUI : MonoBehaviour
 {
     [SerializeField]
-    private ResultScoreUI _resultScoreUI;
+    private ResultScoreUI _scoreUI;
+    [SerializeField]
+    private ResultScoreUI _hightScoreUI;
 
 
     public UIBase GetUI(ResultUITypes resultUIType)
@@ -13,7 +15,9 @@ public class ResultUI : MonoBehaviour
         switch (resultUIType)
         {
             case ResultUITypes.Score:
-                return _resultScoreUI;
+                return _scoreUI;
+            case ResultUITypes.High:
+                return _hightScoreUI;
             default:
                 return null;
         }

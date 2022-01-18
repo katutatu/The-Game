@@ -21,6 +21,9 @@ public class AppController : SingletonMonoBehaviour<AppController>
         // アプリ設定
         Application.targetFrameRate = 60;
 
+        // ユーザーデータ読み込み
+        StaticUserData.Load();
+
         EffectManager.Instance.Setup();
         SoundManager.Instance.Setup();
 #if UNITY_EDITOR
