@@ -7,11 +7,11 @@ public class ClearedPlayableBehaviour : TemplatePlayableBehaviour
 {
     public Plane Player;
     public BattleCamera Camera;
-    private PlayableDirector director;
+    private PlayableDirector Cleareddirector;
 
     public override void OnPlayableCreate(Playable playable)
     {
-        director = (playable.GetGraph().GetResolver() as PlayableDirector);
+        Cleareddirector = (playable.GetGraph().GetResolver() as PlayableDirector);
     }
 
     // Called when the owning graph starts playing
