@@ -51,9 +51,11 @@ public class BattleController : MonoBehaviour
 
                     if (deadCause.Equals(DeadCause.Shoot))
                     {
+                        SoundManager.Instance.Play(SoundNames.SE_DestroyEnemy);
                         _scoreManager.UpdateScore(cPlane.Score);
                     }
                 };
+
                 cPlane.transform.position = planeSpawnInfo.transform.position;
                 cPlane.transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
                 _pilotManager.CreateComPilot(cPlane, pPlane);

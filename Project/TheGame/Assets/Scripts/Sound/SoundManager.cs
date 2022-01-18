@@ -6,6 +6,8 @@ public static class SoundNames
 {
     public const string SE_Enter = "Enter";
     public const string SE_Cancel = "Cancel";
+    public const string SE_DestroyEnemy = "DestroyEnemy";
+    public const string SE_DestroyRock = "DestroyRock";
     public const string BGM_Game = "GameBGM";
 }
 

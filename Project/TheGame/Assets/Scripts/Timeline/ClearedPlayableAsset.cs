@@ -5,20 +5,20 @@ using UnityEngine.Playables;
 public class ClearedPlayableAsset : TemplatePlayableAsset
 {
     [SerializeField]
-    private ExposedReference<GameObject> templateGameObject;
+    private ExposedReference<GameObject> ClearedtemplateGameObject;
 
-    public ClearedPlayableBehaviour template = new ClearedPlayableBehaviour();
+    public ClearedPlayableBehaviour Clearedtemplate = new ClearedPlayableBehaviour();
 
     // Factory method that generates a playable based on this asset
     public override Playable CreatePlayable(PlayableGraph graph, GameObject go)
     {
-        var playable = ScriptPlayable<TemplatePlayableBehaviour>.Create(graph, template);
+        var playable =  ScriptPlayable<ClearedPlayableBehaviour>.Create(graph, Clearedtemplate);
 
         // Get PlayableBehaviour
         var behaviour = playable.GetBehaviour();
 
         // Resolve Reference
-        behaviour.templateGameObject = templateGameObject.Resolve(graph.GetResolver());
+        behaviour.templateGameObject = ClearedtemplateGameObject.Resolve(graph.GetResolver());
 
         return playable;
     }

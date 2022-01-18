@@ -43,6 +43,8 @@ public class Rock : FieldObjectBase
             gameObject.SetActive(false);
             var explEffect = EffectManager.Instance.GetEffect(EffectNames.RockSpark);
             explEffect.Play(transform.position);
+
+            SoundManager.Instance.Play(SoundNames.SE_DestroyRock);
         }
     }
 }
