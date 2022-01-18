@@ -38,6 +38,7 @@ public class Plane : MonoBehaviour, IPlaneCockpit
     [SerializeField]
     private Weapon _weapon = null;
 
+
     /// <summary>所属陣営</summary>
     public TeamTypes TeamType { get; private set; }
 
@@ -75,9 +76,8 @@ public class Plane : MonoBehaviour, IPlaneCockpit
     public System.Action<DeadCause> OnDied;
 
 
-    private float _bulletShootIntervalCount;
-    /// <summary>弾射撃インターフェース</summary>
-    private IBulletShootSystem _bulletShootSystem;
+    /// <summary>軌跡エフェクト</summary>
+    private IEffect _trailEffect;
 
 
     public void Setup(PlaneData planeData, IBulletShootSystem bulletShootSystem, bool isPlayerPlane)
@@ -89,6 +89,9 @@ public class Plane : MonoBehaviour, IPlaneCockpit
         Score = planeData.score;
 
         _weapon.Setup(MasterData.Instance.FindWeaponData(planeData.weapon_id), bulletShootSystem, TeamType);
+
+        _trailEffect = EffectManager.Instance.GetEffect(EffectNames.PlaneTrail);
+        _trailEffect.Play(transform);
 
         Hide();
     }

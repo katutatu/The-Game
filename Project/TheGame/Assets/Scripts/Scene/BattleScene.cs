@@ -44,4 +44,9 @@ public class BattleScene : Scene
             }
         }
     }
+
+    public override void EndScene()
+    {
+        _battleController.End();
+    }
 }

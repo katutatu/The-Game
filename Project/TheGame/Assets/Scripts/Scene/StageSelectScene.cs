@@ -6,11 +6,11 @@ public class StageSelectScene : Scene
 {
     public override void Tick()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             ChangeScene(SceneNames.Stage1);
         }
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
             ChangeScene(SceneNames.Stage2);
         }

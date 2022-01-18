@@ -39,6 +39,9 @@ public class BattleController : MonoBehaviour
                 var cPlane = _planeManager.CreatePlane(MasterData.Instance.FindPlaneData(planeSpawnInfo.Id), _bulletManager, false);
                 cPlane.OnDied += (DeadCause deadCause) =>
                 {
+                    var explEffect = EffectManager.Instance.GetEffect(EffectNames.PlaneExplosion);
+                    explEffect.Play(cPlane.Position);
+
                     if (deadCause.Equals(DeadCause.Shoot))
                     {
                         _scoreManager.UpdateScore(cPlane.Score);
@@ -65,6 +68,11 @@ public class BattleController : MonoBehaviour
         _pilotManager.Tick();
         _planeManager.Tick();
         _bulletManager.Tick();
+    }
+
+    public void End()
+    {
+        EffectManager.Instance.SetAllActive(EffectNames.PlaneTrail, false);
     }
 
     public bool IsDeadPlayer()

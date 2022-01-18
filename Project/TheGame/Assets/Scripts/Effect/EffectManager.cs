@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public static class EffectNames
+{
+    public const string PlaneTrail = "SmokeTrail 3d";
+    public const string PlaneExplosion = "WFX_ExplosiveSmoke Small";
+}
+
 public class EffectManager : SingletonMonoBehaviour<EffectManager>
 {
     [SerializeField]
@@ -32,9 +38,9 @@ public class EffectManager : SingletonMonoBehaviour<EffectManager>
 
     public IEffect GetEffect(string assetName)
     {
-        if (_effectTable.TryGetValue(assetName, out var effects))
+        if (_effectTable.TryGetValue(assetName, out var effectList))
         {
-            foreach (var effect in effects)
+            foreach (var effect in effectList)
             {
                 if (!effect.IsActive)
                 {
@@ -45,14 +51,36 @@ public class EffectManager : SingletonMonoBehaviour<EffectManager>
             var effectPrefab = GetEffectPrefab(assetName);
             if (effectPrefab != null)
             {
-                var effect = Instantiate(effectPrefab);
+                var effect = Instantiate(effectPrefab, transform);
+                effect.name = assetName;
                 effect.Setup();
-                effects.Add(effect);
+                effectList.Add(effect);
                 return effect;
             }
         }
 
         return null;
+    }
+
+    public void DestroyEffect(IEffect iEffect)
+    {
+        var effect = iEffect as Effect;
+        if (_effectTable.TryGetValue(effect.name, out var effectList))
+        {
+            effectList.Remove(effect);
+        }
+        Destroy(effect.gameObject);
+    }
+
+    public void SetAllActive(string assetName, bool isActive)
+    {
+        if (_effectTable.TryGetValue(assetName, out var effectList))
+        {
+            foreach (var effect in effectList)
+            {
+                effect.gameObject.SetActive(false);
+            }
+        }
     }
 
     private Effect GetEffectPrefab(string assetName)

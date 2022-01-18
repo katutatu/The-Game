@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IEffect
 {
     void Play(Vector3 position);
-    void SetParent(Transform parent);
+    void Play(Transform parent);
 }
 
 public class Effect : MonoBehaviour, IEffect
@@ -34,13 +34,15 @@ public class Effect : MonoBehaviour, IEffect
     {
         if (_particle != null)
         {
+            gameObject.SetActive(true);
             _particle.transform.position = position;
             _particle.Play(withChildren: true);
         }
     }
 
-    public void SetParent(Transform parent)
+    public void Play(Transform parent)
     {
         _parent = parent;
+        Play(parent.transform.position);
     }
 }

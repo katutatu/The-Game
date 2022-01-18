@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SceneManager : SingletonMonoBehaviour<SceneManager>
 {
+    private bool _isSceneChanging;
     private Scene _scene;
 
 
@@ -23,9 +24,13 @@ public class SceneManager : SingletonMonoBehaviour<SceneManager>
         }
     }
 
-    public Coroutine ChangeScene(string sceneName)
+    public void ChangeScene(string sceneName)
     {
-        return StartCoroutine(ChangeSceneInternal(sceneName));
+        // 遷移中のシーン変更リクエストはブロックする
+        Debug.Assert(!_isSceneChanging);
+        if (_isSceneChanging) { return; }
+
+        StartCoroutine(ChangeSceneInternal(sceneName));
     }
 
     public string GetActiveSceneName()
@@ -35,6 +40,8 @@ public class SceneManager : SingletonMonoBehaviour<SceneManager>
 
     IEnumerator ChangeSceneInternal(string sceneName)
     {
+        _isSceneChanging = true;
+
         if (_scene != null)
         {
             _scene.EndScene();
@@ -66,8 +73,11 @@ public class SceneManager : SingletonMonoBehaviour<SceneManager>
 
         if (_scene != null)
         {
+            Debug.Log("hoge");
             _scene.StartScene();
             yield return _scene.StartSceneAsync();
         }
+
+        _isSceneChanging = false;
     }
 }

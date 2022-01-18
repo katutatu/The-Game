@@ -370,3 +370,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefabs:
   - {fileID: 7255864768930533875, guid: 4f3fbc2ee3f540a469cda95159007469, type: 3}
+  - {fileID: -2166688079532006232, guid: 2e7e92bc7175b744ea40878dedfa79e4, type: 3}

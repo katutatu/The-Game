@@ -6,7 +6,7 @@ public class TitleScene : Scene
 {
     public override void Tick()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             SceneManager.Instance.ChangeScene(SceneNames.StageSelect);
             SoundManager.Instance.Play(SoundNames.SE_Enter);
